@@ -55,6 +55,33 @@ kubectl get pods
 kubectl get rs
 
 
+//podemos deletar o pod de dentro do replicaSet passando o seu nome randomico
+//nesse caso ele não vai remover vai remover um e gerar o outro em seguida com
+//outro nome randomico
+kubectl delete pods nginx-vtmjl
+
+//devemos lembrar a regra que devemos criar um replicaSet para um conjunto de pods
+//replicaSet não é responsavel pelas imagens
+
+kubectl port-foward pod/nginx-46rgb 9090:80
+
+
+
+
+
+
+
+
+
+
+
+//Teremos agora os Deployments que gerenciam ReplicaSet que gerencia os pods
+
+
+
+
+
+
 
 
 

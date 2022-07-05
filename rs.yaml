@@ -3,6 +3,7 @@ kind: ReplicaSet
 metadata:
   name: nginx
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: nginx
@@ -13,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx
+        image: caddy
         resources:
           limits:
             memory: "128Mi"
