@@ -68,14 +68,22 @@ kubectl port-foward pod/nginx-46rgb 9090:80
 
 
 
-
-
-
-
-
-
-
 //Teremos agora os Deployments que gerenciam ReplicaSet que gerencia os pods
+
+
+
+
+
+
+
+//vamos trabalhar agora com Deployment alterando o arquivo rs.yaml para Deployment
+//vamos alterar o kind de replicaSet para Deployment
+//agora rodamos o seguinte comando
+kubectl apply -f deployment.yaml
+
+
+
+
 
 
 
