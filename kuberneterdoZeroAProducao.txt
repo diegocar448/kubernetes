@@ -1,0 +1,61 @@
+//necessário instalar o kind no windows caso utilize o WSL
+https://kind.sigs.k8s.io/docs/user/quick-start/#installation
+
+///rodar o comando no shell para criar o cluster
+kind create cluster --name=esquenta
+
+//instalar o cubecontrol --toda vez que rodar o cube control vai chamar a api do 
+//kubernetes
+//com esse comando ele dirá que agora usar o cluster chamado kind-esquenta
+kubectl cluster-info --context kind-esquenta
+
+//rodamos para saber quais maquinas estamos rodando o kubernetes
+kubectl get nodes
+
+//o kubernetes tem uma coisa chamada control-plan que seria o cara que 
+//gerencia tudo e os caras gerenciados são as maquinas que ficam sendo gerenciadas
+//no control-plan
+
+//é recomendavel que se tenha pelo menos 3 maquinas para rodar um cluster kubernetes
+
+
+//agora vamos rodar o nosso pod.yaml que fica no diretorio
+kubectl apply -f pod.yaml
+
+//listar os pods criados
+kubectl get pods
+
+//rodar para criar o nginx que estava setado em nosso pod.yaml temos a seguinte sequencia
+//O nginx é um container que esta rodando dentro de um pod
+//esse pod esta rodando dentro de uma maquina do kubernetes 
+// essa maquina do kubernetes esta rodando dentro do nosso docker
+
+
+//Para termos acesso precisamos fazer um apontamento da maquina para o 
+//pod especifico chamamos de "port-forward
+
+//faremos o apontamento com o seguinte comando
+//esse comando fará com que toda vez que adicionamos a porta 9090 ele apontará
+//para a porta 80 do nosso nginx
+kubectl port-forward pod/nginx 9090:80
+
+//removendo o pod nginx
+kubectl delete pod nginx
+
+//podemos usar os ReplicaSet para gerenciar as replicas que temos do nossos pods
+//para usar replicaSet criamos um arquivo chamado rs.yaml
+
+//o replicaSet vai criar um pod dentro dele
+
+//rodamos o replicaSet rs.yaml
+kubectl apply -f rs.yaml
+
+//agora temos duas listagens podemos lista o replicaSet ou o Pod dentro do ReplicaSet
+kubectl get pods
+kubectl get rs
+
+
+
+
+
+
